@@ -13,7 +13,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@700&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -30,6 +30,10 @@
 </head>
 
 <body>
+    <p>{{Auth::user()->name}}</p>
+    @if (session()->has('message'))
+        {{session('message')}}
+    @endif
     <!-- Topbar Start -->
     <div class="container-fluid border-bottom d-none d-lg-block">
         <div class="row gx-0">
@@ -67,20 +71,23 @@
 
     <!-- Navbar Start -->
 
-    
-   
+
+
     <!-- Navbar End -->
     @include('Admin.Style.sidebar')
+    @include('Admin.Menu.dasbord')
 
     @yield('Menu')
 
     @yield('border')
-   
+
     @yield('cart')
 
     
+
+
     <!-- Blog End -->
-    
+
 
     <!-- Footer Start -->
     <div class="container-fluid bg-light mt-5 py-5">
@@ -88,10 +95,10 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
-                    <p class="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor</p>
-                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>info@example.com</p>
-                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+012 345 67890</p>
+                    <p class="mb-4">Kami siap 24 jam,Bisa hubungi kami di no di bawah ini</p>
+                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>Jl. Ganteng No 1, Jakarta, Indonesia</p>
+                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>contact@e-store.com</p>
+                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+62 123456789</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Quick Links</h5>
@@ -151,10 +158,10 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-md-0">&copy; <a class="text-white" href="#">Your Site Name</a>. All Rights Reserved.</p>
+                    <p class="mb-md-0">&copy; <a class="text-white" href="#">E-STORE</a>. 2023.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">Designed by <a class="text-white" href="https://htmlcodex.com">HTML Codex</a></p>
+                    <p class="mb-0">Designed by <a class="text-white" href="https://htmlcodex.com">Rezeky Ramadhan S</a></p>
                 </div>
             </div>
         </div>
@@ -172,7 +179,7 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
+    <script src="https://kit.fontawesome.com/60f3c978d3.js" crossorigin="anonymous"></script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 

@@ -8,11 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0">
             <a href="/" class="nav-item nav-link active">Home</a>
-            <a href="about.html" class="nav-item nav-link">About</a>
-            <a href="service.html" class="nav-item nav-link">Service</a>
             <a href="/prd" class="nav-item nav-link">Product</a>
             <a href="/shopping_cart" class="nav-item nav-link" ><i class="bi bi-cart"></i></a>
-            <a href="contact.html" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i class="bi bi-arrow-right"></i></a>
+            <a href="/logout" class="nav-item nav-link" ><i class="fa-solid fa-right-from-bracket"></i></a>
+            <a href="contact.html" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5"><i class="fa fa-user"></i>Contak <i class="bi bi-arrow-right"></i></a>
         </div>
     </div>
 </nav>

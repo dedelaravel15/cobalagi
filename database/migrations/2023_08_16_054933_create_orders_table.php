@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('cart_id');
+            $table->string('postman')->nullable();
+            $table->string('payment_recipe')->nullable();
+            $table->string('is_paid')->default(false);
             $table->timestamps();
         });
     }

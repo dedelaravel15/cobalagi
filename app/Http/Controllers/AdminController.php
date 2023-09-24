@@ -47,33 +47,6 @@ class AdminController extends Controller
     {
         return view('Admin.menu.edit', compact('product'));
     }
-    public function update(Request $request, Product $product)
-    {
-        $file = $request->file('image');
-        $path = time().'_'.$request->name.'.'.$file->getClientOriginalExtension();
-        Storage::disk('local')->put('public/'.$path, file_get_contents($file));
-
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'stock' => 'required',
-            'image' => 'required'
-        ]);
-        $product->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'price' => $request->price,
-            'stock' => $request->stock,
-            'image' => $path
-        ]);
-        return redirect()->route('product')->with('edit', 'Data berhasil di ubah');
-    }
-    public function delete(Product $product)
-    {
-        $product->delete();
-        return redirect()->route('product')->with('delete', 'Data berhasil di hapus');
-    }
 
     public function prd()
     {
@@ -86,7 +59,7 @@ class AdminController extends Controller
     public function show($id)
     {
         return view('Admin.Menu.show',[
-            
+
             "item" => Product::find($id),
         ]);
     }
@@ -111,5 +84,36 @@ class AdminController extends Controller
 
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product add to cart successfully!');
+    }
+
+    public function update(Request $request)
+    {
+        if($request->id && $request->stock){
+            $cart = session()->get('cart');
+            $cart[$request->id]["stock"] = $request->stock;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart successfully updated!');
+        }
+    }
+
+    public function remove(Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Product successfully removed!');
+        }
+
+    }
+    public function post()
+    {
+        return view('Admin.Menu.post');
+    }
+    public function add_post()
+    {
+        return view('Admin.Menu.addpost');
     }
  }
